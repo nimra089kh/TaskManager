@@ -1,0 +1,35 @@
+﻿@model TaskManager.Models.LoginViewModel
+
+<div class="login-page mt-lg-5 mt-md-3">
+    <div class="glass-card">
+        <h2 class="glass-title">User Login</h2>
+        <p class="glass-subtitle mt-4">Welcome back, please login</p>
+
+        <form asp-action="Login" method="post">
+            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="glass-input" type="email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="glass-input" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3form-check d-flex text-white">
+                <input asp-for="RememberMe" type="checkbox" />
+                <label asp-for="RememberMe" class="ms-2"></label>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="createbutton">
+                    Login
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

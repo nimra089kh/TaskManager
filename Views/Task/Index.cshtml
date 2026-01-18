@@ -1,0 +1,99 @@
+﻿@model List<TaskManager.Models.TaskItem>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+
+    <form method="get" class="row g-3 w-100">
+
+        <div class="col-md-6">
+            <input type="text"
+                   name="Searchstring"
+                   value="@ViewBag.SearchString"
+                   class="glass-input"
+                   placeholder="Search Task" />
+        </div>
+
+        <div class="col-md-3">
+            <select name="Statusfilter"
+                    class="glass-input"
+                    asp-items="ViewBag.StatusList">
+            </select>
+        </div>
+
+        <div class="col-md-3 d-flex align-items-end">
+            <button type="submit"
+                    class="createbutton w-100">
+                Filter
+            </button>
+        </div>
+
+    </form>
+
+
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info mt-5">
+        No task available
+    </div>
+}
+else
+{
+    <div class="task-grid mt-5">
+        @foreach (var task in Model)
+        {
+            <div class="sticky-note @GetRandomColor()">
+                <!-- Thumbpin inside sticky note -->
+                <i class="fa-solid fa-thumbtack thumbpin"></i>
+
+
+
+
+                <h5>@task.Title</h5>
+                <p>@task.Description</p>
+                <p><strong>Due:</strong> @task.DueDate.ToShortDateString()</p>
+               <div class="actions d-flex align-items-center gap-2 mt-auto">
+    <form asp-action="ToggleStatus" method="post" class="m-0 p-0">
+        <input type="hidden" name="id" value="@task.Id" />
+        <label class="checkbox-wrapper-41 m-0 p-0">
+            <input type="checkbox" @(task.IsCompleted ? "checked" : "") onchange="this.form.submit()">
+        </label>
+    </form>
+
+    <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-sm btn-warning d-flex align-items-center justify-content-center">
+        <i class="fa-solid fa-pen"></i>
+    </a>
+    <a asp-action="Delete" asp-route-id="@task.Id" class="btn btn-sm btn-danger d-flex align-items-center justify-content-center">
+        <i class="fa-solid fa-xmark"></i>
+    </a>
+</div>
+
+               
+            </div>
+        }
+    </div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+@functions {
+    private string GetRandomColor()
+    {
+        var colors = new[]
+        {
+            "note-blue", "note-pink", "note-yellow", "note-green", "note-purple",
+            "note-orange", "note-red", "note-teal", "note-cyan", "note-lime",
+            "note-magenta", "note-peach", "note-mint", "note-lavender"
+        };
+        var rnd = new Random();
+        return colors[rnd.Next(colors.Length)];
+    }
+
+  
+}

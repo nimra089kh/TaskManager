@@ -1,0 +1,29 @@
+﻿<div class="row g-4 mt-lg-auto justify-content-center">
+    <div class="col-md-3 col-sm-6 d-flex justify-content-center">
+        <div class="dashboard-card glass-card text-center">
+            <h6>Total Tasks</h6>
+            <h2>@ViewBag.TotalTasks</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 d-flex justify-content-center">
+        <div class="dashboard-card glass-card text-center">
+            <h6>Completed</h6>
+            <h2 class="text-success">@ViewBag.Completed</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 d-flex justify-content-center">
+        <div class="dashboard-card glass-card text-center">
+            <h6>Pending</h6>
+            <h2 class="text-warning">@ViewBag.Pending</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 d-flex justify-content-center">
+        <div class="dashboard-card glass-card text-center">
+            <h6>Overdue</h6>
+            <h2 class="text-danger">@ViewBag.OverDue</h2>
+        </div>
+    </div>
+</div>

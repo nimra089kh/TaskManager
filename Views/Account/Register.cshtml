@@ -1,0 +1,36 @@
+﻿@model TaskManager.Models.RegisterViewModel
+
+<div class="login-page mt-lg-5 mt-md-3">
+    <div class="glass-card">
+        <h2 class="glass-title">User Registration</h2>
+        <p class="glass-subtitle mt-4">Create your account</p>
+
+        <form asp-controller="Account" asp-action="Register" method="post">
+            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" type="email" class="glass-input" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" class="glass-input" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" type="password" class="glass-input" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="createbutton">
+                    Register
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

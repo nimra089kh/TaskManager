@@ -1,0 +1,27 @@
+﻿@model TaskManager.Models.TaskItem
+
+<div class="login-page">
+    <div class="glass-card">
+        <h2 class="glass-title">Delete Task</h2>
+        <div class="alert alert-warning mt-3">
+            Are you sure you want to delete the task "<strong>@Model.Title</strong>"?
+        </div>
+
+        <ul class="list-group mb-3">
+            <li class="list-group-item glass-input m-2"> <strong>Title:</strong> @Model.Title</li>
+            <li class="list-group-item glass-input m-2"> <strong>Description:</strong> @Model.Description</li>
+            <li class="list-group-item glass-input m-2"> <strong>Due Date:</strong> @Model.DueDate.ToShortDateString()</li>
+        </ul>
+
+        <form asp-action="Delete" method="post" class="d-flex justify-content-between">
+            <input type="hidden" asp-for="Id" />
+
+            <button type="submit" class="btn btn-danger w-45">Delete</button>
+            <a asp-action="Index" class="btn btn-secondary w-45">Cancel</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
